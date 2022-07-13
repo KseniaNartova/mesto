@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto Russia</title>
     <link rel="stylesheet" href="pages/index.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body class="page">
     <header class="header">
@@ -31,59 +30,59 @@
                     <img class="photo-grid__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
                     <div class="photo-grid__text">
                         <h2 class="photo-grid__title">Карачаевск</h2>
-                        <div class="photo-grid__like"></div>
+                        <button type="button" class="photo-grid__like"></button>
                     </div>
                 </li>
                 <li class="photo-grid__card">
                     <img class="photo-grid__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
                     <div class="photo-grid__text">
                         <h2 class="photo-grid__title">Гора Эльбрус</h2>
-                        <div class="photo-grid__like"></div>
+                        <button type="button" class="photo-grid__like"></button>
                     </div>
                 </li>
                 <li class="photo-grid__card">
                     <img class="photo-grid__image" src="./images/dombai.jpg" alt="Домбай">
                     <div class="photo-grid__text">
                         <h2 class="photo-grid__title">Домбай</h2>
-                        <div class="photo-grid__like"></div>
+                        <button type="button" class="photo-grid__like"></button>
                     </div>
                 </li>
                 <li class="photo-grid__card">
                     <img class="photo-grid__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
                     <div class="photo-grid__text">
                         <h2 class="photo-grid__title">Гора Эльбрус</h2>
-                        <div class="photo-grid__like"></div>
+                        <button type="button" class="photo-grid__like"></button>
                     </div>
                 </li>
                 <li class="photo-grid__card">
                     <img class="photo-grid__image" src="./images/dombai.jpg" alt="Домбай">
                     <div class="photo-grid__text">
                         <h2 class="photo-grid__title">Домбай</h2>
-                        <div class="photo-grid__like"></div>
+                        <button type="button" class="photo-grid__like"></button>
                     </div>
                 </li>
                 <li class="photo-grid__card">
                     <img class="photo-grid__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
                     <div class="photo-grid__text">
                         <h2 class="photo-grid__title">Карачаево-Черкесия</h2>
-                        <div class="photo-grid__like"></div>
+                        <button type="button" class="photo-grid__like"></button>
                     </div>
                 </li>
             </ul>
         </section>
-        <section class="popup">
+        <div class="popup">
             <div class="popup__content popup__content_type_form">
                 <button type="button" class="popup__button-close"></button>
                 <form class="popup__container" name="user">
+                    <h3 class="popup__title">Редактировать профиль</h3>
                     <fieldset class="popup__input-container">
-                        <h3 class="popup__title">Редактировать профиль</h3>
-                        <input type="text" name="name" placeholder="Имя" class="popup__input popup__user-name" maxlength="30" required>
-                        <input type="text" placeholder="Профессия"  class="popup__input popup__metier" maxlength="100" required>
+                        <input type="text" name="name" placeholder="Имя" class="popup__input popup__input_type_name" maxlength="30" required>
+                        <input type="text" placeholder="Профессия" class="popup__input popup__input_type_text" maxlength="100" required>
                         <button type="submit" class="popup__button-save">Сохранить</button>
                     </fieldset>                    
                 </form>
             </div>
-        </section>
+        </div>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>

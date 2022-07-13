@@ -9,13 +9,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 500px;
-}
-
-@media (max-width: 935px) {
-    .profile__subtitle {
-        max-width: 335px;
-    }
+    max-width: 205px;
 }
 
 @media (max-width: 630px) {
@@ -24,11 +18,7 @@
         line-height: 17px;
         padding-top: 5px;
         text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .profile__subtitle {
-        max-width: 220px;
+        max-width: 159px;
+        padding-left: 13px;
     }
 }

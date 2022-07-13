@@ -1,8 +1,8 @@
 let openButtonProfile = document.querySelector('.profile__button'); //pen image
 let popupProfile = document.querySelector('.popup'); // всплывающее окно
-let nameInput = document.querySelector('.popup__user-name'); //поле имени в попапе
+let nameInput = document.querySelector('.popup__input_type_name'); //поле имени в попапе
 let userName = document.querySelector('.profile__title'); //имя в профайле
-let jobInput = document.querySelector('.popup__metier'); //поле род занятий в попапе
+let jobInput = document.querySelector('.popup__input_type_text'); //поле род занятий в попапе
 let job = document.querySelector('.profile__subtitle'); // род занятий в профайле
 let profileButtonClose = document.querySelector('.popup__button-close'); //кнопка закрыть
 let popupContainer = document.querySelector('.popup__container'); // форма
@@ -11,14 +11,12 @@ let popupContainer = document.querySelector('.popup__container'); // форма
 function profileOpen() {
     nameInput.value = userName.textContent;
     jobInput.value = job.textContent;
-    popupProfile.classList.add('popup__open');
+    popupProfile.classList.add('popup_open');
 }
-
-openButtonProfile.addEventListener('click', profileOpen);
 
 //закрыть попап
 function popupClose() {
-    popupProfile.classList.remove('popup__open');
+    popupProfile.classList.remove('popup_open');
 }
 
 //сохранить новые данные профиля
@@ -29,6 +27,7 @@ function formSubmitHandler(evt) {
     popupClose();
 }
 
+openButtonProfile.addEventListener('click', profileOpen);
 popupContainer.addEventListener('submit', formSubmitHandler);
 profileButtonClose.addEventListener('click', popupClose)
 
