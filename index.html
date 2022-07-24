@@ -26,8 +26,9 @@
         </section>
         <section class="photo-grid">
             <ul class="photo-grid__cards">
-                <li class="photo-grid__card">
+                <!-- <li class="photo-grid__card">
                     <img class="photo-grid__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+                    <button class="photo-grid__delete-button"></button>
                     <div class="photo-grid__text">
                         <h2 class="photo-grid__title">Карачаевск</h2>
                         <button type="button" class="photo-grid__like"></button>
@@ -67,13 +68,13 @@
                         <h2 class="photo-grid__title">Карачаево-Черкесия</h2>
                         <button type="button" class="photo-grid__like"></button>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </section>
-        <div class="popup">
+        <div class="popup popup_type_profile">
             <div class="popup__content popup__content_type_form">
-                <button type="button" class="popup__button-close"></button>
-                <form class="popup__container" name="user">
+                <button type="button" class="popup__button-close popup__button-close_type_profile"></button>
+                <form class="popup__container popup__container_shift_profile" name="user">
                     <h3 class="popup__title">Редактировать профиль</h3>
                     <fieldset class="popup__input-container">
                         <input type="text" name="name" placeholder="Имя" class="popup__input popup__input_type_name" maxlength="30" required>
@@ -83,10 +84,36 @@
                 </form>
             </div>
         </div>
+
+        <div class="popup popup_type_cardsProfile">
+            <div class="popup__content popup__content_type_form">
+                <button type="button" class="popup__button-close popup__button-close_type_add-cards"></button>
+                <form class="popup__container popup__container_shift_cards" name="cards">
+                    <h3 class="popup__title">Новое место</h3>
+                    <fieldset class="popup__input-container">
+                        <input type="text" name="title" placeholder="Название места" class="popup__input popup__input_type_title" maxlength="40" required>
+                        <input type="text" name="link" placeholder="Ссылка на картинку" class="popup__input popup__input_type_link" maxlength="1000" required>
+                        <button type="submit" class="popup__button-save">Создать</button>
+                    </fieldset>                    
+                </form>
+            </div>
+        </div>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
+
+    <template class="temlate-cards">
+        <li class="photo-grid__card">
+            <img class="photo-grid__image" src="#" alt="">
+            <button class="photo-grid__delete-button"></button>
+            <div class="photo-grid__text">
+                <h2 class="photo-grid__title"></h2>
+                <button type="button" class="photo-grid__like"></button>
+            </div>
+        </li>
+    </template>
+
     <script src="./script/index.js"></script>
 </body>
 </html>
