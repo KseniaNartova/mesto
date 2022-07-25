@@ -1,4 +1,4 @@
-let openButtonProfile = document.querySelector('.profile__button'); //pen image
+let openButtonProfile = document.querySelector('.profile__button_type_edit'); //pen image
 let popupProfile = document.querySelector('.popup_type_profile'); // всплывающее окно профиля
 let nameInput = document.querySelector('.popup__input_type_name'); //поле имени в попапе
 let userName = document.querySelector('.profile__title'); //имя в профайле
@@ -16,8 +16,12 @@ let templateCards = document.querySelector('.temlate-cards').content //template 
 let catalogCards = document.querySelector('.photo-grid__cards') // список фото
 let titleInputAddCard = document.querySelector('.popup__input_type_title'); //поле названия картинки в попапе
 let linkInputAddCard = document.querySelector('.popup__input_type_link'); //поле ссылки картинки в попапе
-let imageCard = document.querySelector('.photo-grid__image'); // картинка карточки
 let titleCard = document.querySelector('.photo-grid__title'); // название картинки
+let closeImgPopap = document.querySelector('.popup__button-close_type_close-img'); //кнопка закрытия попапа картинки
+let bigImage = document.querySelector('.popup_type_big-image'); //попап картинок
+let popapImgTitle = document.querySelector('.popup__img-title'); //заголовок картинки в попапе
+let buttonImgCard = document.querySelector('.photo-grid__card_type_button-img'); //
+let popapImg = document.querySelector('.popup__img'); // картинка в попапе для картинки
 
 //массив карточек
   const arrayCards = [
@@ -46,7 +50,6 @@ let titleCard = document.querySelector('.photo-grid__title'); // названи�
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
   ];
-
 
 //открыть попап профиля и записать данные
 function profileOpen() {
@@ -85,39 +88,57 @@ function cardsProfileClose() {
 addButton.addEventListener('click', cardsProfileOpen);
 cardsButtonClose.addEventListener('click', cardsProfileClose);
 
+// создать карточки
+function makeCards(name, link) {
+  let cardEl = templateCards.querySelector('.photo-grid__card').cloneNode(true); // клонируем содержимое template
+  let imageCard = cardEl.querySelector('.photo-grid__image'); // картинка карточки
+  cardEl.querySelector('.photo-grid__title').textContent = name;
+  imageCard.src = link;
+  cardEl.querySelector('.photo-grid__like').addEventListener('click', likeCard);
+  cardEl.querySelector('.photo-grid__delete-button').addEventListener('click', deleteCard);
+  function likeCard() {
+    cardEl.querySelector('.photo-grid__like').classList.toggle('photo-grid__like_type_active');
+}
+  function deleteCard() {
+    cardEl.remove();
+}
+cardEl.querySelector('.photo-grid__card_type_button-img').addEventListener('click', function() {
+  popapImg.src = link;
+  popapImgTitle.textContent = name;
+  openBigImg();
+})
+  return cardEl;
+};
+
 // добавление карточек
+
 function addCards(evt) {
   evt.preventDefault();
- const cardElement = templateCards.querySelector('.photo-grid__card').cloneNode(true); // клонируем содержимое тега template
- cardElement.querySelector('.photo-grid__image').src = linkInputAddCard.value;
- cardElement.querySelector('.photo-grid__title').textContent = titleInputAddCard.value;
- catalogCards.append(cardElement);
-//  nameCard = cardElement.querySelector('.photo-grid__title').textContent;
-//  linkCard =  cardElement.querySelector('.photo-grid__image').src;
- cardsProfileClose();
-}
+  let cardLink = linkInputAddCard.value;
+  let cardName = titleInputAddCard.value;
+  let newCard = makeCards(cardName, cardLink);
+  catalogCards.prepend(newCard);
+  cardsProfileClose();
+};
+
+//стартовые карточки
+
+arrayCards.forEach(function(item) {
+  let cardStart = makeCards(item.name, item.link);
+  catalogCards.append(cardStart);
+})
 
 popupContainerCards.addEventListener('submit', addCards);
 
+function openBigImg() {
+  bigImage.classList.add('popup_open');
+}
 
 
+function closeBigImg() {
+  bigImage.classList.remove('popup_open');
+}
 
-// function makeCards(name, link) {
-//   // const cardElement = templateCards.querySelector('.photo-grid__card').cloneNode(true); // клонируем содержимое тега template
-//   titleCard.textContent = name;
-//   imageCard.src = link;
-// };
+closeImgPopap.addEventListener('click', closeBigImg);
 
-// function copyCard(name, link) {
-//   let cardsNew = makeCards(name, link);
-//   catalogCards.prepend(cardsNew);
-// }
 
-// // карточки из массива
-// function makeArrayCards() {
-//   arrayCards.forEach(function (item) {
-//   copyCard(item.name, item.link);
-//   })
-// }
-
-// makeArrayCards();

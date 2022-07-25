@@ -26,49 +26,6 @@
         </section>
         <section class="photo-grid">
             <ul class="photo-grid__cards">
-                <!-- <li class="photo-grid__card">
-                    <img class="photo-grid__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <button class="photo-grid__delete-button"></button>
-                    <div class="photo-grid__text">
-                        <h2 class="photo-grid__title">Карачаевск</h2>
-                        <button type="button" class="photo-grid__like"></button>
-                    </div>
-                </li>
-                <li class="photo-grid__card">
-                    <img class="photo-grid__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-                    <div class="photo-grid__text">
-                        <h2 class="photo-grid__title">Гора Эльбрус</h2>
-                        <button type="button" class="photo-grid__like"></button>
-                    </div>
-                </li>
-                <li class="photo-grid__card">
-                    <img class="photo-grid__image" src="./images/dombai.jpg" alt="Домбай">
-                    <div class="photo-grid__text">
-                        <h2 class="photo-grid__title">Домбай</h2>
-                        <button type="button" class="photo-grid__like"></button>
-                    </div>
-                </li>
-                <li class="photo-grid__card">
-                    <img class="photo-grid__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-                    <div class="photo-grid__text">
-                        <h2 class="photo-grid__title">Гора Эльбрус</h2>
-                        <button type="button" class="photo-grid__like"></button>
-                    </div>
-                </li>
-                <li class="photo-grid__card">
-                    <img class="photo-grid__image" src="./images/dombai.jpg" alt="Домбай">
-                    <div class="photo-grid__text">
-                        <h2 class="photo-grid__title">Домбай</h2>
-                        <button type="button" class="photo-grid__like"></button>
-                    </div>
-                </li>
-                <li class="photo-grid__card">
-                    <img class="photo-grid__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="photo-grid__text">
-                        <h2 class="photo-grid__title">Карачаево-Черкесия</h2>
-                        <button type="button" class="photo-grid__like"></button>
-                    </div>
-                </li> -->
             </ul>
         </section>
         <div class="popup popup_type_profile">
@@ -98,6 +55,14 @@
                 </form>
             </div>
         </div>
+
+        <div class="popup popup_type_big-image">
+            <div class="popup__content popup_content_type_big-image">
+                <img class="popup__img" src="#" alt="">
+                <h3 class="popup__img-title"></h3>
+                <button type="button" class="popup__button-close popup__button-close_type_close-img"></button>
+            </div>
+    </div>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
@@ -105,7 +70,7 @@
 
     <template class="temlate-cards">
         <li class="photo-grid__card">
-            <img class="photo-grid__image" src="#" alt="">
+            <button type="button" class="photo-grid__card_type_button-img"><img class="photo-grid__image" src="#" alt=""></button>
             <button class="photo-grid__delete-button"></button>
             <div class="photo-grid__text">
                 <h2 class="photo-grid__title"></h2>
