@@ -112,18 +112,19 @@ function addCard(evt) {
   evt.preventDefault();
   const cardLink = popupAddCardLinkInput.value;
   const cardName = popupAddCardTitleInput.value;
-  const newCard = createCard(cardName, cardLink);
-  cardsCatalog.prepend(newCard);
+  renderCard(cardName, cardLink);
   closePopup(popupAddCard);
 };
 
+function renderCard(name, link) {
+  const cardStart = createCard(name, link);
+  cardsCatalog.prepend(cardStart);
+ }
+
 //стартовые карточки
 
-const arrayCardsreversed = arrayCards.reverse();
-
-arrayCardsreversed.forEach(function(item) {
-  const cardStart = createCard(item.name, item.link);
-  cardsCatalog.append(cardStart);
+arrayCards.forEach(function(item) {
+  renderCard(item.name, item.link) 
 });
 
 addCardButton.addEventListener('click',() => openPopup(popupAddCard));
