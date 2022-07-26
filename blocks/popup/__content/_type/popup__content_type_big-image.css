@@ -1,3 +1,6 @@
 .popup__content_type_big-image {
-    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
