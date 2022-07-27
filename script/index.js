@@ -1,23 +1,23 @@
-const openButtonProfile = document.querySelector('.profile__button_type_edit'); //pen image
+const buttonOpenProfile = document.querySelector('.profile__button_type_edit'); //pen image
 const popupProfile = document.querySelector('.popup_type_profile'); // всплывающее окно профиля
 const nameInput = document.querySelector('.popup__input_type_name'); //поле имени в попапе
 const userName = document.querySelector('.profile__title'); //имя в профайле
 const jobInput = document.querySelector('.popup__input_type_text'); //поле род занятий в попапе
 const job = document.querySelector('.profile__subtitle'); // род занятий в профайле
-const closeProfilePopup = document.querySelector('.popup__button-close_type_profile'); //кнопка закрыть профиль
+const buttonCloseProfilePopup = document.querySelector('.popup__button-close_type_profile'); //кнопка закрыть профиль
 const popupProfileForm = document.querySelector('.popup__container_shift_profile'); // форма профиля
 
 //переменные для добавления карточек
 const popupAddCardForm = document.querySelector('.popup__container_shift_cards'); // форма карточек
 const popupAddCard = document.querySelector('.popup_type_cards-profile'); // всплывающее окно карточек
 const addCardButton = document.querySelector('.profile__button_type_add'); //кнопка добавления карточек
-const buttonCloseAddCards = document.querySelector('.popup__button-close_type_add-cards'); //кнопка закрыть
+const buttonCloseAddCardsProfile = document.querySelector('.popup__button-close_type_add-cards'); //кнопка закрыть
 const templateCard = document.querySelector('.temlate-cards').content //template карточек
 const cardsCatalog = document.querySelector('.photo-grid__cards') // список фото
 const popupAddCardTitleInput = document.querySelector('.popup__input_type_title'); //поле названия картинки в попапе
 const popupAddCardLinkInput = document.querySelector('.popup__input_type_link'); //поле ссылки картинки в попапе
 const cardTitle = document.querySelector('.photo-grid__title'); // название картинки
-const closeImgPopup = document.querySelector('.popup__button-close_type_close-img'); //кнопка закрытия попапа картинки
+const buttonCloseImgPopup = document.querySelector('.popup__button-close_type_close-img'); //кнопка закрытия попапа картинки
 const popupBigImage = document.querySelector('.popup_type_big-image'); //попап картинок
 const popupImgTitle = document.querySelector('.popup__img-title'); //заголовок картинки в попапе
 const buttonImgCard = document.querySelector('.photo-grid__card_type_button-img'); //
@@ -63,23 +63,23 @@ function closePopup(popup) {
 };
 
 //открыть попап профиля и записать данные
-function addFirstName() {
+function fillProfileFields() {
     nameInput.value = userName.textContent;
     jobInput.value = job.textContent;
     openPopup(popupProfile);
 };
 
 //сохранить новые данные профиля
-function formSubmitHandler(evt) {
+function formSubmitHandlerProfileForm(evt) {
     evt.preventDefault();
     userName.textContent = nameInput.value;
     job.textContent = jobInput.value;
     closePopup(popupProfile);
 }
 
-openButtonProfile.addEventListener('click', addFirstName);
-popupProfileForm.addEventListener('submit', formSubmitHandler); 
-closeProfilePopup.addEventListener('click', () => closePopup(popupProfile));
+buttonOpenProfile.addEventListener('click', fillProfileFields);
+popupProfileForm.addEventListener('submit', formSubmitHandlerProfileForm); 
+buttonCloseProfilePopup.addEventListener('click', () => closePopup(popupProfile));
 
 
 // создать карточки
@@ -128,10 +128,10 @@ arrayCards.forEach(function(item) {
 });
 
 addCardButton.addEventListener('click',() => openPopup(popupAddCard));
-buttonCloseAddCards.addEventListener('click', () => closePopup(popupAddCard));
+buttonCloseAddCardsProfile.addEventListener('click', () => closePopup(popupAddCard));
 
 popupAddCardForm.addEventListener('submit', addCard);
 
-closeImgPopup.addEventListener('click', () => closePopup(popupBigImage));
+buttonCloseImgPopup.addEventListener('click', () => closePopup(popupBigImage));
 
 
