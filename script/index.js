@@ -24,37 +24,13 @@ const buttonImgCard = document.querySelector('.photo-grid__card_type_button-img'
 const popupImg = document.querySelector('.popup__img'); // картинка в попапе для картинки
 const temlateCards = templateCard.querySelector('.photo-grid__card');
 
-//массив карточек
-  const arrayCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
 
 //Общая функция открытия попапов
 function openPopup(popupClass) {
+  popupAddCardForm.reset();
   popupClass.classList.add('popup_open');
+  document.addEventListener('keydown', closePopupEsc);
+  popupClass.addEventListener('click', closePopupOverlay);
 };
 
 //Общая функция закрытия попапов
@@ -70,7 +46,7 @@ function fillProfileFields() {
 };
 
 //сохранить новые данные профиля
-function formSubmitHandlerProfileForm(evt) {
+function submitProfileForm(evt) {
     evt.preventDefault();
     userName.textContent = nameInput.value;
     job.textContent = jobInput.value;
@@ -78,7 +54,7 @@ function formSubmitHandlerProfileForm(evt) {
 }
 
 buttonOpenProfile.addEventListener('click', fillProfileFields);
-popupProfileForm.addEventListener('submit', formSubmitHandlerProfileForm); 
+popupProfileForm.addEventListener('submit', submitProfileForm); 
 buttonCloseProfilePopup.addEventListener('click', () => closePopup(popupProfile));
 
 
@@ -91,6 +67,7 @@ function createCard(name, link) {
   cardImage.alt = name;
   cardEl.querySelector('.photo-grid__like').addEventListener('click', likeCard);
   cardEl.querySelector('.photo-grid__delete-button').addEventListener('click', deleteCard);
+  
   function likeCard() {
     cardEl.querySelector('.photo-grid__like').classList.toggle('photo-grid__like_type_active');
 }
@@ -114,6 +91,9 @@ function addCard(evt) {
   const cardName = popupAddCardTitleInput.value;
   renderCard(cardName, cardLink);
   closePopup(popupAddCard);
+  const saveButton = popupAddCardForm.querySelector('.popup__button-save')
+  saveButton.setAttribute('disabled', 'disabled');
+  saveButton.classList.add('popup__button-save_type_disabled')
 };
 
 function renderCard(name, link) {
@@ -127,7 +107,31 @@ arrayCards.forEach(function(item) {
   renderCard(item.name, item.link) 
 });
 
-addCardButton.addEventListener('click',() => openPopup(popupAddCard));
+function closePopupOverlay(evt) {
+  if (evt.target !== evt.currentTarget) {
+  return
+  }
+  const openPopup = document.querySelector('.popup_open');
+  closePopup(openPopup)
+}
+
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+      const openPopup = document.querySelector('.popup_open');
+      closePopup(openPopup);
+  }
+}
+
+function removeSpan() {
+  const error = Array.from(document.querySelectorAll('.popup__error'))
+  error.forEach((error) => {
+      error.textContent = ''
+  })
+}
+
+
+addCardButton.addEventListener('click',() => {openPopup(popupAddCard); removeSpan()});
+
 buttonCloseAddCardsProfile.addEventListener('click', () => closePopup(popupAddCard));
 
 popupAddCardForm.addEventListener('submit', addCard);

@@ -31,12 +31,18 @@
         <div class="popup popup_type_profile">
             <div class="popup__content popup__content_type_form">
                 <button type="button" class="popup__button-close popup__button-close_type_profile"></button>
-                <form class="popup__container popup__container_shift_profile" name="user">
+                <form class="popup__container popup__container_shift_profile" name="user" novalidate>
                     <h3 class="popup__title">Редактировать профиль</h3>
                     <fieldset class="popup__input-container">
-                        <input type="text" name="name" placeholder="Имя" class="popup__input popup__input_type_name" maxlength="30" required>
-                        <input type="text" name="about-self" placeholder="Профессия" class="popup__input popup__input_type_text" maxlength="100" required>
-                        <button type="submit" class="popup__button-save">Сохранить</button>
+                        <div class="popup__inputs">
+                            <input type="text" name="name" placeholder="Имя" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required>
+                            <span class="popup__error" id="name-error"></span>
+                        </div>
+                        <div class="popup__inputs">
+                            <input type="text" name="about-self" placeholder="Профессия" class="popup__input popup__input_type_text" minlength="2" maxlength="200" required>
+                            <span class="popup__error" id="about-self-error"></span>
+                        </div>
+                        <button type="submit" class="popup__button-save popup__button-save_type_disabled" disabled>Сохранить</button>
                     </fieldset>                    
                 </form>
             </div>
@@ -45,12 +51,18 @@
         <div class="popup popup_type_cards-profile">
             <div class="popup__content popup__content_type_form">
                 <button type="button" class="popup__button-close popup__button-close_type_add-cards"></button>
-                <form class="popup__container popup__container_shift_cards" name="cards">
+                <form class="popup__container popup__container_shift_cards" name="cards" novalidate>
                     <h3 class="popup__title">Новое место</h3>
                     <fieldset class="popup__input-container">
-                        <input type="text" name="title" placeholder="Название места" class="popup__input popup__input_type_title" maxlength="40" required>
-                        <input type="text" name="link" placeholder="Ссылка на картинку" class="popup__input popup__input_type_link" maxlength="1000" required>
-                        <button type="submit" class="popup__button-save">Создать</button>
+                        <div class="popup__inputs">
+                            <input type="text" id="title" name="title" placeholder="Название места" class="popup__input popup__input_type_title" minlength="2" maxlength="30" required>
+                            <span class="popup__error" id="title-error"></span>
+                        </div>
+                        <div class="popup__inputs">
+                            <input type="url" id="link" name="link" placeholder="Ссылка на картинку" class="popup__input popup__input_type_link" required>
+                            <span class="popup__error" id="link-error"></span>
+                        </div>
+                        <button type="submit" class="popup__button-save popup__button-save_type_disabled" disabled>Создать</button>
                     </fieldset>                    
                 </form>
             </div>
@@ -79,7 +91,9 @@
         </li>
     </template>
 
+    <script defer src="./script/cards.js"></script>
     <script defer src="./script/index.js"></script>
+    <script defer src="./script/validate.js"></script>
 </body>
 </html>
 
