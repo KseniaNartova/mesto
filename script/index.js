@@ -4,38 +4,36 @@ const nameInput = document.querySelector('.popup__input_type_name'); //поле 
 const userName = document.querySelector('.profile__title'); //имя в профайле
 const jobInput = document.querySelector('.popup__input_type_text'); //поле род занятий в попапе
 const job = document.querySelector('.profile__subtitle'); // род занятий в профайле
-const buttonCloseProfilePopup = document.querySelector('.popup__button-close_type_profile'); //кнопка закрыть профиль
 const popupProfileForm = document.querySelector('.popup__container_shift_profile'); // форма профиля
+
 
 //переменные для добавления карточек
 const popupAddCardForm = document.querySelector('.popup__container_shift_cards'); // форма карточек
 const popupAddCard = document.querySelector('.popup_type_cards-profile'); // всплывающее окно карточек
 const addCardButton = document.querySelector('.profile__button_type_add'); //кнопка добавления карточек
-const buttonCloseAddCardsProfile = document.querySelector('.popup__button-close_type_add-cards'); //кнопка закрыть
 const templateCard = document.querySelector('.temlate-cards').content //template карточек
 const cardsCatalog = document.querySelector('.photo-grid__cards') // список фото
 const popupAddCardTitleInput = document.querySelector('.popup__input_type_title'); //поле названия картинки в попапе
 const popupAddCardLinkInput = document.querySelector('.popup__input_type_link'); //поле ссылки картинки в попапе
 const cardTitle = document.querySelector('.photo-grid__title'); // название картинки
-const buttonCloseImgPopup = document.querySelector('.popup__button-close_type_close-img'); //кнопка закрытия попапа картинки
 const popupBigImage = document.querySelector('.popup_type_big-image'); //попап картинок
 const popupImgTitle = document.querySelector('.popup__img-title'); //заголовок картинки в попапе
 const buttonImgCard = document.querySelector('.photo-grid__card_type_button-img'); //
 const popupImg = document.querySelector('.popup__img'); // картинка в попапе для картинки
 const temlateCards = templateCard.querySelector('.photo-grid__card');
-
+const popupForm = document.querySelectorAll('.popup');
 
 //Общая функция открытия попапов
 function openPopup(popupClass) {
   popupAddCardForm.reset();
   popupClass.classList.add('popup_open');
   document.addEventListener('keydown', closePopupEsc);
-  popupClass.addEventListener('click', closePopupOverlay);
 };
 
 //Общая функция закрытия попапов
 function closePopup(popup) {
   popup.classList.remove('popup_open');
+  document.removeEventListener('keydown', closePopupEsc);
 };
 
 //открыть попап профиля и записать данные
@@ -52,11 +50,6 @@ function submitProfileForm(evt) {
     job.textContent = jobInput.value;
     closePopup(popupProfile);
 }
-
-buttonOpenProfile.addEventListener('click', fillProfileFields);
-popupProfileForm.addEventListener('submit', submitProfileForm); 
-buttonCloseProfilePopup.addEventListener('click', () => closePopup(popupProfile));
-
 
 // создать карточки
 function createCard(name, link) {
@@ -107,13 +100,16 @@ arrayCards.forEach(function(item) {
   renderCard(item.name, item.link) 
 });
 
-function closePopupOverlay(evt) {
-  if (evt.target !== evt.currentTarget) {
-  return
+function closePopupOverlayAndCross(evt) {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__button-close')) {
+    closePopup(evt.currentTarget);
   }
-  const openPopup = document.querySelector('.popup_open');
-  closePopup(openPopup)
 }
+
+popupForm.forEach((item) => {
+  item.addEventListener('click', closePopupOverlayAndCross);
+});
+
 
 function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
@@ -129,13 +125,14 @@ function removeSpan() {
   })
 }
 
+buttonOpenProfile.addEventListener('click', fillProfileFields);
+popupProfileForm.addEventListener('submit', submitProfileForm); 
 
 addCardButton.addEventListener('click',() => {openPopup(popupAddCard); removeSpan()});
 
-buttonCloseAddCardsProfile.addEventListener('click', () => closePopup(popupAddCard));
-
 popupAddCardForm.addEventListener('submit', addCard);
 
-buttonCloseImgPopup.addEventListener('click', () => closePopup(popupBigImage));
+
+
 
 

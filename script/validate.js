@@ -1,4 +1,4 @@
-const formObj = {
+const validationConfig = {
     formSelector: '.popup__container',
     submitButtonSelector: '.popup__button-save',
     inputSelector: '.popup__input',
@@ -49,12 +49,12 @@ const enableValidation = (config) => {
             const form = evt.currentTarget;
             assignNameFieldError(input, form);
             toggleButtonFormSubmit(form, config);
-            checkValidInput(formSelector, config);
+            checkValidInput(form, config);
         });
     })
 }
 
-enableValidation(formObj);
+enableValidation(validationConfig);
 
 
 
