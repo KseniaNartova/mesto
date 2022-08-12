@@ -8,7 +8,7 @@
     z-index: 2;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0.4s, opacity 0.5s linear;    justify-content: center;
+    transition: visibility 0.4s, opacity 0.5s linear;
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, .5);
