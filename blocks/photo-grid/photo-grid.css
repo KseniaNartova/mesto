@@ -1,7 +1,7 @@
 .photo-grid {
     margin: 0 auto;
     padding-top: 48px;
-    max-width: 69%;
+    max-width: 880px;
 }
 
 @media (max-width: 600px) {
