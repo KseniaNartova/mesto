@@ -50,6 +50,17 @@ export class FormValidator {
         this._buttonFormSubmitValid(this._popupForm);
         this._checkValidInput(this._input);
 }
+    _setErrorInputValid(input) {
+        input.classList.remove(this._config.inputErrorClass);
+        this._hideNameFieldError(input);
+    }
+
+    resetValidation() {
+        this._buttonFormSubmitNotValid()
+        this._inputs.forEach((input) => {
+            this._setErrorInputValid(input)
+        })
+}
 
     enableValidation() {
         this._popupForm.addEventListener('input', (evt) => this._handleFormInput(evt));

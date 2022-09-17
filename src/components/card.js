@@ -1,6 +1,6 @@
 export class Card {
     constructor(data, templateSelector, openPopupBigCard) {
-        this._name = data.name
+        this._name = data.name;
         this._link = data.link;
         this._templateSelector = templateSelector;
         this._openPopupBigCard = openPopupBigCard;
@@ -50,3 +50,5 @@ export class Card {
       })
     };
 };
+
+

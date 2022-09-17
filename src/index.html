@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto Russia</title>
-    <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="page">
     <header class="header">
-        <img src="./images/logo.svg" alt="логотип Mesto Russia" class="header__logo">
+        <img src="<%=require('./images/logo.svg')%>" alt="логотип Mesto Russia" class="header__logo">
     </header>
     <main class="content">
         <section class="profile">
             <div class="profile__info">
-                <img src="./images/kusto.jpg" alt="аватар профиля" class="profile__avatar">
+                <img src="<%=require('./images/kusto.jpg')%>" alt="аватар профиля" class="profile__avatar">
                 <div class="profile__autor">
                     <div class="profile__name">
                         <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -39,8 +38,8 @@
                             <span class="popup__error" id="name-error"></span>
                         </div>
                         <div class="popup__inputs">
-                            <input type="text" name="about-self" placeholder="Профессия" class="popup__input popup__input_type_text" minlength="2" maxlength="200" required>
-                            <span class="popup__error" id="about-self-error"></span>
+                            <input type="text" name="aboutself" placeholder="Профессия" class="popup__input popup__input_type_text" minlength="2" maxlength="200" required>
+                            <span class="popup__error" id="aboutself-error"></span>
                         </div>
                         <button type="submit" class="popup__button-save popup__button-save_type_disabled" disabled>Сохранить</button>
                     </fieldset>                    
@@ -90,10 +89,6 @@
             </div>
         </li>
     </template>
-
-    <script defer src="./script/cards.js"></script>
-    <!-- <script defer src="./script/validate.js"></script> -->
-    <script defer type="module" src="./script/index.js"></script>
 
 </body>
 </html>

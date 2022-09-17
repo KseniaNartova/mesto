@@ -1,5 +1,5 @@
 //массив карточек
- const arrayCards = [
+export const arrayCards = [
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -38,4 +38,4 @@
     }
   ];
 
-  export default arrayCards
+ 
