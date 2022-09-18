@@ -19,25 +19,27 @@ export class Card {
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
-      
+
         const cardImage = this._element.querySelector('.photo-grid__image'); 
         cardImage.alt = this._name;
         cardImage.src = this._link;
         this._element.querySelector('.photo-grid__title').textContent = this._name;
-    
+        
         return this._element;
       }
 
     _likeCard() {
-        this._element.querySelector('.photo-grid__like').classList.toggle('photo-grid__like_type_active');
+      this._buttonLikeCard.classList.toggle('photo-grid__like_type_active');
      }
 
     _deleteCard() {
         this._element.remove();
+        this._element = null;
     }
 
     _setEventListeners() {
-       this._element.querySelector('.photo-grid__like').addEventListener('click', () => {
+        this._buttonLikeCard = this._element.querySelector('.photo-grid__like');
+        this._buttonLikeCard.addEventListener('click', () => {
         this._likeCard();
       });
 

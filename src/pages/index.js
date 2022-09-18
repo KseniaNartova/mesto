@@ -5,19 +5,19 @@ import {
   jobInput,
   popupProfileForm,
   popupAddCardForm,
-  addCardButton,
+  buttonAddCard,
   cardsCatalog,
   validationConfig,
-} from '../utils/constants.js';
-import {arrayCards} from '../utils/cards.js';
+} from '../utils/Constants.js';
+import {arrayCards} from '../utils/Cards.js';
 
 
-import {Card} from '../components/card.js';
-import {FormValidator} from '../components/formValidator.js';
-import {Section} from '../components/section.js';
-import {PopupWithImage} from '../components/popupWithImage.js';
-import {PopupWithForm} from '../components/popupWithForm.js'
-import { UserInfo } from '../components/userInfo.js';
+import {Card} from '../components/Card.js';
+import {FormValidator} from '../components/FormValidator.js';
+import {Section} from '../components/Section.js';
+import {PopupWithImage} from '../components/PopupWithImage.js';
+import {PopupWithForm} from '../components/PopupWithForm.js'
+import { UserInfo } from '../components/UserInfo.js';
 
 const popupBigCard = new PopupWithImage('.popup_type_big-image');
 popupBigCard.setEventListeners();
@@ -32,24 +32,23 @@ function createCard(item) {
 };
 
 //отрисовка дефолтных карточек
-const defaultCards = new Section ({
+const cardList = new Section ({
   items: arrayCards,
   renderer: (item) => {
     const card = createCard(item);
-    defaultCards.addItem(card)
+    cardList.addItem(card)
   }
 }, cardsCatalog);
-defaultCards.renderItems();
+cardList.renderItems();
 
 //отрисовка новых карточек
-    const popupWithFormCard = new PopupWithForm(
-      '.popup_type_cards-profile',
-      (item) => {
-          const cardEl = createCard({ name: item.title, link: item.link })
-          defaultCards.addItem(cardEl)
-          popupWithFormCard.close()
-      }
-  );
+const popupWithFormCard = new PopupWithForm(
+  '.popup_type_cards-profile',
+  (item) => {
+    const cardEl = createCard({ name: item.title, link: item.link })
+    cardList.addItem(cardEl)
+    popupWithFormCard.close()
+});
   popupWithFormCard.setEventListeners();
 
 const profileUser = new UserInfo({
@@ -60,8 +59,8 @@ const profileUser = new UserInfo({
 const popupWithFormProfile = new PopupWithForm(
   '.popup_type_profile',
   (item) => {
-      profileUser.setUserInfo({ nameUser: item.name, jobUser: item.aboutself })
-      popupWithFormProfile.close()
+    profileUser.setUserInfo({ nameUser: item.name, jobUser: item.aboutself })
+    popupWithFormProfile.close()
   }
 )
 popupWithFormProfile.setEventListeners();
@@ -75,7 +74,7 @@ const formValidationCard = new FormValidator(validationConfig, popupAddCardForm)
 formValidationCard.enableValidation();
 
 // слушатели 
-addCardButton.addEventListener('click', () => {
+buttonAddCard.addEventListener('click', () => {
   popupWithFormCard.open()
   formValidationCard.resetValidation();
 })

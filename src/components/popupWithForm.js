@@ -1,5 +1,5 @@
-import {Popup} from '../components/popup.js';
-import { validationConfig } from '../utils/constants.js';
+import {Popup} from './Popup.js';
+import { validationConfig } from '../utils/Constants.js';
 
 
 export class PopupWithForm extends Popup {
