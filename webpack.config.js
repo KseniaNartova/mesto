@@ -18,7 +18,6 @@ module.exports = {
     
         open: true // сайт будет открываться сам при запуске npm run dev
       },
-
       module: {
         rules: [ // rules — это массив правил
           // добавим в него объект правил для бабеля
@@ -46,13 +45,11 @@ module.exports = {
               options: { importLoaders: 1 }
             },
             'postcss-loader']
-          },
-          ]
+          },]
       },
       plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html' // путь к файлу index.html
-          }),
+            template: './src/index.html' }),
           new CleanWebpackPlugin(),
           new MiniCssExtractPlugin(),
       ]
