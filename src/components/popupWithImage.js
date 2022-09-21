@@ -13,7 +13,7 @@ export class PopupWithImage extends Popup {
         this._popupImgTitle.textContent = name;
         this._popupImg.alt = name;
     }
-}
+};
 
 
 

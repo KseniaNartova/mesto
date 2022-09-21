@@ -8,8 +8,8 @@ import {
   buttonAddCard,
   cardsCatalog,
   validationConfig,
-} from '../utils/Constants.js';
-import {arrayCards} from '../utils/Cards.js';
+} from '../utils/сonstants.js';
+import {arrayCards} from '../utils/сards.js';
 
 
 import {Card} from '../components/Card.js';

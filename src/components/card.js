@@ -40,7 +40,7 @@ export class Card {
     _setEventListeners() {
         this._buttonLikeCard = this._element.querySelector('.photo-grid__like');
         this._buttonLikeCard.addEventListener('click', () => {
-        this._likeCard();
+          this._likeCard();
       });
 
       this._element.querySelector('.photo-grid__delete-button').addEventListener('click', () => {

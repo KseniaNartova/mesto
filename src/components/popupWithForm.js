@@ -30,4 +30,4 @@ export class PopupWithForm extends Popup {
             this._submitProfileForm(this._getInputValues())
         })
 }
-}
+};

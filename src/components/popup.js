@@ -15,7 +15,7 @@ export class Popup {
 
     _closePopupEsc = (evt) => {
         if (evt.key === 'Escape') {
-          this.close();
+            this.close();
         }
     }
 

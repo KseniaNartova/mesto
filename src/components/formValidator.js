@@ -6,7 +6,7 @@ export class FormValidator {
         this._button = this._popupForm.querySelector(this._config.submitButtonSelector);
     }
 
-//показать текст ошибки
+//показывает текст ошибки
     _assignNameFieldError(input) {
         this._nameSpan = this._popupForm.querySelector(`#${input.name}-error`);
         this._nameSpan.textContent = input.validationMessage;
