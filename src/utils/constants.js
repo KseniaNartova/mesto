@@ -5,7 +5,9 @@ const popupProfileForm = document.querySelector('.popup__container_shift_profile
 
 //переменные для добавления карточек
 const popupAddCardForm = document.querySelector('.popup__container_shift_cards'); // форма карточек
+const popupAvatarForm = document.querySelector('.popup__container_shift_avatar');
 const buttonAddCard = document.querySelector('.profile__button_type_add'); //кнопка добавления карточек
+const buttonOpenAvatarProfile = document.querySelector('.profile__image-button');
 const cardsCatalog = document.querySelector('.photo-grid__cards'); // список фото
 
 const validationConfig = {
@@ -25,4 +27,6 @@ export {
     buttonAddCard,
     cardsCatalog,
     validationConfig,
+    popupAvatarForm,
+    buttonOpenAvatarProfile,
 }  

@@ -9,6 +9,7 @@
     cursor: pointer;
     border: 0;
     background-image: url(../../../images/like.svg);
+
 }
 
 .photo-grid__like:hover {
