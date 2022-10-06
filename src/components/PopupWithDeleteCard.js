@@ -6,7 +6,7 @@ export class PopupWithDeleteCard extends Popup {
         this._buttonConfirmDeleteCard = document.querySelector('.popup__button-save_type_confirm-delete')
     }
 
-    apiData(data) {
+    setSubmitHandler(data) {
         this._submitRequest = data;
     }
     
