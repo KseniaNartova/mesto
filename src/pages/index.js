@@ -40,11 +40,11 @@ const profileUser = new UserInfo({
 });
 const idUser = {};
 
-const section = new Section(
+const cardsSection = new Section(
   {
     renderer: (item) => {
       const cardEl = createCard(item);
-      section.addItem(cardEl);
+      cardsSection.addItem(cardEl);
     },
   },
   cardsCatalog
@@ -53,7 +53,7 @@ const section = new Section(
 Promise.all([api.getUserInfo(), api.getCards()])
   .then(([userApiData, cardsData]) => {
     idUser._id = userApiData._id;
-    section.renderItems(cardsData.reverse());
+    cardsSection.renderItems(cardsData.reverse());
     profileUser.setUserInfo({
       nameUser: userApiData.name,
       jobUser: userApiData.about,
@@ -104,7 +104,7 @@ function createCard(item) {
       api
         .addLike(item._id)
         .then((res) => {
-          card.setLikesLenght({
+          card.setLikes({
             length: res.likes.length,
             likes: res.likes,
           });
@@ -121,7 +121,7 @@ function createCard(item) {
       api
         .deleteLike(item._id)
         .then((res) => {
-          card.setLikesLenght({
+          card.setLikes({
             length: res.likes.length,
             likes: res.likes,
           });
@@ -166,7 +166,7 @@ const popupWithFormCard = new PopupWithForm(
       .then((res) => {
         popupWithFormCard.close();
         const cardEl = createCard(res);
-        section.addItem(cardEl);
+        cardsSection.addItem(cardEl);
       })
       .catch((err) => {
         console.log(err);

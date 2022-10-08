@@ -8,8 +8,8 @@ export class PopupWithDeleteCard extends Popup {
     );
   }
 
-  setSubmitHandler(data) {
-    this._submitRequest = data;
+  setSubmitHandler(handleSubmit) {
+    this._submitRequest = handleSubmit;
   }
 
   setEventListeners() {

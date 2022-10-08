@@ -91,9 +91,9 @@ export class Card {
     this._element = null;
   }
 
-  setLikesLenght(likeItem) {
-    this._like.textContent = likeItem.length;
-    this._likes = likeItem.likes;
+  setLikes(likesData) {
+    this._like.textContent = likesData.length;
+    this._likes = likesData.likes;
   }
 
   _setEventListeners() {
